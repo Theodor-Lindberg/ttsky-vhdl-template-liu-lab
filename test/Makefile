@@ -4,9 +4,6 @@
 # List your source files here:
 SOURCE_FILES = project.vhdl
 
-# Toplevel name of your VHDL project
-COCOTB_TOPLEVEL = tt_um_example
-
 # Common
 WAVES ?= 1
 SRC_DIR = $(PWD)/../src
@@ -16,6 +13,9 @@ $(info ************ Running simulation on LiU computer ************)
 ifeq ($(GATES),yes)
 $(warning ************ Gate level simulation selected but currently not set up on LiU computers ************)
 endif
+
+# Toplevel name of your VHDL project
+COCOTB_TOPLEVEL = tt_um_example
 
 TOPLEVEL_LANG = vhdl
 SIM = ghdl
@@ -70,6 +70,8 @@ endif # !LIU
 
 # List test modules to run, separated by commas and without the .py suffix:
 COCOTB_TEST_MODULES = test
+# Set MODULE, in case cocotb 1.9 is used in tt-support-tools
+MODULE = test
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
